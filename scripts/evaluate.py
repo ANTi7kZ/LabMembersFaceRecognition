@@ -43,7 +43,7 @@ def evaluate_graph(graph_file_name):
             labels = ground_truth_input,
             logits = logits))
         
-    image_dir = 'tf_files/photos'
+    image_dir = 'photos'
     testing_percentage = 10
     validation_percentage = 10
     validation_batch_size = 100
@@ -70,7 +70,7 @@ def evaluate_graph(graph_file_name):
     xents = []
     with tf.Session(graph=graph) as sess:
         for filename, ground_truth in zip(filenames, ground_truths):    
-            image = Image.open(filename).resize((224,224),Image.ANTIALIAS)
+            image = Image.open(filename).resize((160,160),Image.ANTIALIAS)
             image = np.array(image, dtype=np.float32)[None,...]
             image = (image-128)/128.0
 
