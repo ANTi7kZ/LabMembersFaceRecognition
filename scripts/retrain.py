@@ -281,6 +281,11 @@ def create_model_graph(model_info):
               model_info['bottleneck_tensor_name'],
               model_info['resized_input_tensor_name'],
           ]))
+    paddings = tf.constant([[0, 0,], [0, 7]])
+    padded = tf.pad(bottleneck_tensor, paddings, "CONSTANT")
+    print('test')
+    print(padded.get_shape())
+    bottleneck_tensor = padded
   return graph, bottleneck_tensor, resized_input_tensor
 
 
@@ -755,9 +760,12 @@ def add_final_training_ops(class_count, final_tensor_name, bottleneck_tensor,
     bottleneck input and ground truth input.
   """
   with tf.name_scope('input'):
+    #split0, split1 = tf.split(bottleneck_tensor, [1000, 1], 0)
     bottleneck_input = tf.placeholder_with_default(
         bottleneck_tensor,
         shape=[None, bottleneck_tensor_size],
+		#bottleneck_tensor,
+        #shape=[None, bottleneck_tensor_size],
         name='BottleneckInputPlaceholder')
 
     ground_truth_input = tf.placeholder(tf.float32,
@@ -905,7 +913,7 @@ def create_model_info(architecture):
     data_url = 'http://download.tensorflow.org/models/mobilenet_v1_'
     data_url += version_string + '_' + size_string + '_frozen.tgz'
     bottleneck_tensor_name = 'MobilenetV1/Predictions/Reshape:0'
-    bottleneck_tensor_size = 1001
+    bottleneck_tensor_size = 1008
     input_width = int(size_string)
     input_height = int(size_string)
     input_depth = 3
