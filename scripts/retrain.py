@@ -905,7 +905,7 @@ def create_model_info(architecture):
     data_url = 'http://download.tensorflow.org/models/mobilenet_v1_'
     data_url += version_string + '_' + size_string + '_frozen.tgz'
     bottleneck_tensor_name = 'MobilenetV1/Predictions/Reshape:0'
-    bottleneck_tensor_size = 1001
+    bottleneck_tensor_size = 1000
     input_width = int(size_string)
     input_height = int(size_string)
     input_depth = 3
