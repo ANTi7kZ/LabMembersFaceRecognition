@@ -7,7 +7,7 @@ graph.ParseFromString(open('rounded_graph.pb','rb').read())
 def display_nodes(nodes):
     for i, node in enumerate(nodes):
         print('%d %s %s' % (i, node.name, node.op))
-        [print(u'└─── %d ─ %s' % (i, n.encode("utf-8"))) for i, n in enumerate(node.input)]
+        # [print(u'└─── %d ─ %s' % (i, n.encode("utf-8"))) for i, n in enumerate(node.input)]
     
 display_nodes(graph.node)
 
