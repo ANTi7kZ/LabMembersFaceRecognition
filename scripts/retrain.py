@@ -281,11 +281,6 @@ def create_model_graph(model_info):
               model_info['bottleneck_tensor_name'],
               model_info['resized_input_tensor_name'],
           ]))
-    paddings = tf.constant([[0, 0,], [0, 7]])
-    padded = tf.pad(bottleneck_tensor, paddings, "CONSTANT")
-    print('test')
-    print(padded.get_shape())
-    bottleneck_tensor = padded
   return graph, bottleneck_tensor, resized_input_tensor
 
 
