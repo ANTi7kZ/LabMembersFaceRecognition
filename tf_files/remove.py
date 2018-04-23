@@ -1,3 +1,5 @@
+import tensorflow as tf
+
 # read frozen graph and display nodes
 graph = tf.GraphDef()
 
@@ -5,7 +7,7 @@ def display_nodes(nodes):
     for i, node in enumerate(nodes):
         print('%d %s %s' % (i, node.name, node.op))
         [print(u'└─── %d ─ %s' % (i, n)) for i, n in enumerate(node.input)]
-        
+
 with tf.gfile.Open('./rounded_graph.pb', 'r') as f:
     data = f.read()
     graph.ParseFromString(data)
