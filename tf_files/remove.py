@@ -13,7 +13,7 @@ def display_nodes(nodes):
 display_nodes(graph.node)
 
 # # Connect 'MatMul_1' with 'Relu_2'
-graph.node[417].input[0] = 'Pad' # 44 -> MatMul_1
+graph.node[419].input[0] = 'Pad' # 44 -> MatMul_1
 # # Remove dropout nodes
 nodes = graph.node[:415] + graph.node[417:] # 33 -> MatMul_1 
 # del nodes[1] # 1 -> keep_prob
