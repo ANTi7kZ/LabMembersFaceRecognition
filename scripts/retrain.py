@@ -805,7 +805,7 @@ def add_final_training_ops(class_count, final_tensor_name, bottleneck_tensor,
     optimizer = tf.train.GradientDescentOptimizer(FLAGS.learning_rate)
     train_step = optimizer.minimize(cross_entropy_mean)
 
-  return (train_step, cross_entropy_mean, bottleneck_input, ground_truth_input,
+  return (train_step, cross_entropy_mean, ground_truth_input,
           final_tensor)
 
 
@@ -1034,7 +1034,7 @@ def main(_):
                         bottleneck_tensor, FLAGS.architecture)
 
     # Add the new layer that we'll be training.
-    (train_step, cross_entropy, bottleneck_input, ground_truth_input,
+    (train_step, cross_entropy, ground_truth_input,
      final_tensor) = add_final_training_ops(
          len(image_lists.keys()), FLAGS.final_tensor_name, bottleneck_tensor,
          model_info['bottleneck_tensor_size'])
