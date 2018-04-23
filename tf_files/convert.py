@@ -23,5 +23,5 @@ def graphdef_to_pbtxt(filename):
   return
 
 
-graphdef_to_pbtxt('rounded_graph.pb')  # here you can write the name of the file to be converted
+graphdef_to_pbtxt('rounded_graph_without_dropout.pb')  # here you can write the name of the file to be converted
 # and then a new file will be made in pbtxt directory.
