@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow.core.framework import graph_pb2
 
 # read frozen graph and display nodes
 graph = tf.GraphDef()
@@ -12,13 +13,13 @@ def display_nodes(nodes):
 display_nodes(graph.node)
 
 # # Connect 'MatMul_1' with 'Relu_2'
-# graph.node[44].input[0] = 'Relu_2' # 44 -> MatMul_1
+graph.node[417].input[0] = 'Pad' # 44 -> MatMul_1
 # # Remove dropout nodes
-# nodes = graph.node[:33] + graph.node[44:] # 33 -> MatMul_1 
+nodes = graph.node[:415] + graph.node[417:] # 33 -> MatMul_1 
 # del nodes[1] # 1 -> keep_prob
 
 # Save graph
 output_graph = graph_pb2.GraphDef()
 output_graph.node.extend(nodes)
-with tf.gfile.GFile('./frozen_model_without_dropout.pb', 'w') as f:
+with tf.gfile.GFile('./rounded_graph_without_dropout.pb', 'w') as f:
     f.write(output_graph.SerializeToString())
