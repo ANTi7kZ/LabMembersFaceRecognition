@@ -762,12 +762,12 @@ def add_final_training_ops(class_count, final_tensor_name, bottleneck_tensor,
   """
   with tf.name_scope('input'):
     #split0, split1 = tf.split(bottleneck_tensor, [1000, 1], 0)
-    bottleneck_input = tf.placeholder_with_default(
-        bottleneck_tensor,
-        shape=[None, bottleneck_tensor_size],
-        #bottleneck_tensor,
-        #shape=[None, bottleneck_tensor_size],
-        name='BottleneckInputPlaceholder')
+#    bottleneck_input = tf.placeholder_with_default(
+#        bottleneck_tensor,
+#        shape=[None, bottleneck_tensor_size],
+#        #bottleneck_tensor,
+#        #shape=[None, bottleneck_tensor_size],
+#        name='BottleneckInputPlaceholder')
 
     ground_truth_input = tf.placeholder(tf.float32,
                                         [None, class_count],
@@ -788,7 +788,7 @@ def add_final_training_ops(class_count, final_tensor_name, bottleneck_tensor,
       layer_biases = tf.Variable(tf.zeros([class_count]), name='final_biases')
       variable_summaries(layer_biases)
     with tf.name_scope('Wx_plus_b'):
-      logits = tf.matmul(bottleneck_input, layer_weights) + layer_biases
+      logits = tf.matmul(bottleneck_tensor, layer_weights) + layer_biases
       tf.summary.histogram('pre_activations', logits)
 
   final_tensor = tf.nn.softmax(logits, name=final_tensor_name)
