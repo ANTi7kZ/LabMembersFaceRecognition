@@ -1,20 +1,11 @@
-# Overview
+./mobilenet_based_classifier.py --model_path /opt/aiy/models/mobilenet_v1_160res_0.5_imagenet.binaryproto --label_path /home/pi/AIY-projects-python/src/aiy/vision/models/image_classification_classes.py --input_width 160 --input_height 160 --input_layer input --output_layer MobilenetV1/Predictions/Softmax
 
-This repo contains code for the "TensorFlow for poets 2" series of codelabs.
+./mobilenet_based_classifier.py --model_path /opt/aiy/models/mobilenet_v1_160res_0.5_imagenet.binaryproto --label_path /home/pi/AIY-projects-python/src/aiy/vision/models/image_classification_classes_own --input_width 160 --input_height 160 --input_layer input --output_layer MobilenetV1/Predictions/Softmax
 
-There are multiple versions of this codelab depending on which version 
-of the tensorflow libraries you plan on using:
+./mobilenet_based_classifier.py --model_path /opt/aiy/models/rounded_graph.binaryproto --label_path /home/pi/AIY-projects-python/src/aiy/vision/models/person_classes --input_width 160 --input_height 160 --input_layer input --output_layer final_result
 
-* For [TensorFlow Lite](https://www.tensorflow.org/mobile/tflite/) the new, ground up rewrite targeted at mobile devices
-  use [this version of the codelab](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets-2-tflite) 
-* For the more mature [TensorFlow Mobile](https://www.tensorflow.org/mobile/mobile_intro) use 
-  [this version of the codealab](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets-2).
+scp -r mobilenet_based_classifier_custom.py /home/pi/AIY-projects-python/src/examples/vision
 
+./mobilenet_based_classifier_custom.py --model_path /opt/aiy/models/rounded_graph.binaryproto --label_path /home/pi/AIY-projects-python/src/aiy/vision/models/person_classes --input_width 160 --input_height 160 --input_layer input --output_layer final_result
 
-This repo contains simplified and trimmed down version of tensorflow's example image classification apps.
-
-* The TensorFlow Lite version, in `android/tflite`, comes from [tensorflow/contrib/lite/](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/lite).
-* The Tensorflow Mobile version, in `android/tfmobile`, comes from [tensorflow/examples/android/](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android).
-
-The `scripts` directory contains helpers for the codelab. Some of these come from the main TensorFlow repository, and are included here so you can use them without also downloading the main TensorFlow repo (they are not part of the TensorFlow `pip` installation).
-
+./mobilenet_based_classifier_custom.py --model_path /opt/aiy/models/rounded_graph.binaryproto --label_path /home/pi/AIY-projects-python/src/aiy/vision/models/person_classes --input_width 160 --input_height 160 --input_layer input --output_layer final_result --image_inference --input_image 
